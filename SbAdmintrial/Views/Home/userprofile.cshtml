@@ -1,0 +1,69 @@
+﻿@model SbAdmintrial.Models.retrievuser
+
+@{
+    ViewBag.Title = "userprofile";
+    Layout = "~/Views/Shared/ITlayout.cshtml";
+}
+
+<h2>userprofile</h2>
+
+<div class="container font" >
+    
+    @Html.HiddenFor(model => model.idUser)
+    @Html.HiddenFor(model => model.Password)
+    
+        <dl class="row" >
+
+
+
+            <dt>
+                FirstName
+            </dt>
+            <dd>
+
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        </dl>
+        <dl class="row">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+        </dl>
+
+        <dl class="row">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+
+        </dl>
+</div>
+<p>
+    <a href='@Url.Action("editprofile", "Home",new { id = Model.idUser})' class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i>UPDATE PROFILE
+    </a>
+   
+</p>

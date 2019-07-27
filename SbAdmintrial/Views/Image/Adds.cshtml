@@ -1,0 +1,62 @@
+﻿@model SbAdmintrial.Models.meterial
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Study Material For Module</h2>
+
+@using(Html.BeginForm("Add","Image",FormMethod.Post,new { enctype = multipart / FormatException - DataAnnotationsModelMetadata }))
+{    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idmaterial)
+
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.materialname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.materialname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.materialname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="custom-file">
+                    <input asp-for="imagefile" class="form-control custom-file-input" />
+                    <label class="custom-file-label">Choose File...</label>
+                    @*@Html.TextBox("imagefile", new { type = "file" })*@
+                    @*<input type="file" name="imagefile" required ></div>*@
+                    <br />
+                </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-default" />
+            </div>
+        </div>
+            @{
+                if (ViewBag.Message != null)
+                {
+                    @ViewBag.Message
+                    }
+                }
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

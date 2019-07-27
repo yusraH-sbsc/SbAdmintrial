@@ -1,0 +1,67 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "UserRole";
+    Layout = "~/Views/Shared/ITlayout.cshtml";
+}
+
+
+
+
+<h2>UserRole</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                User Name
+            </th>
+            <th>
+                Role
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+
+                <td>
+                    @Model.Rows[i][0]
+                </td>
+                <td>
+                    @Model.Rows[i][1]
+                </td>
+                <td>
+                    @Model.Rows[i][2]
+                </td>
+
+                <td>
+                    @Model.Rows[i][3]
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit Role", "changeRole", new { id = Model.Rows[i][0] }) |
+                    @Html.ActionLink("Details", "Details", new { id = Model.Rows[i][0] }) }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.Rows[i][0] })})
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+

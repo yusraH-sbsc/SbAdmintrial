@@ -1,0 +1,57 @@
+﻿@model SbAdmintrial.Models.courseXuser
+
+@{
+    ViewBag.Title = "courseauthors";
+    Layout = "~/Views/Shared/ITlayout.cshtml";
+}
+
+
+    <hi> adding course authors</hi>
+
+<div>@ViewBag.errorMessage</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.courseid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.courseid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.courseid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownList("usernames", ViewBag.usernames as SelectList, "----- Select Author user names----", new { @class = "form-control",  @id = "ddselect",@onchange = "ddlselect()" }  )
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username, new { @class = "form-control", @id = "textvalue" })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary btn-user btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+      <script>
+          function ddlselect()
+          {
+              var d=doument.getElementById("ddselect");
+              var displaytext = d.options[d.selectedIndex].text;
+              document.getElementById("textvalue").value = diplaytext;
+          }
+      </script>
+

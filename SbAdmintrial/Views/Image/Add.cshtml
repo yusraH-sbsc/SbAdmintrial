@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<center>
+    <h1>Add</h1>
+    <h2>Add</h2>
+    <hr/>
+    @using(Html.BeginForm("Add","Image",FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="file" />
+        <input  type="submit" value="Save Images"/>
+    }
+
+</center>
